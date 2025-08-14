@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Amor 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    #typed-text {
+      font-size: 1.5em;
+      max-width: 90%;
+      margin: 20px auto;
+      line-height: 1.6;
+      min-height: 100px;
+    }
+
+    .secret-message {
+      display: none;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #880e4f;
+      font-size: 1.3em;
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      #typed-text,
+      .secret-message {
+        font-size: 1.1em;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      color: #e91e63;
+      animation: float 6s infinite;
+      font-size: 24px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* SURPRESA FINAL */
+    #surprise {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to top right, #ffebef, #ffc0cb);
+      color: #e91e63;
+      font-family: 'Dancing Script', cursive;
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #surprise h2 {
+      font-size: 3em;
+      animation: pulse 2s infinite;
+    }
+
+    #surprise p {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main-content">
+    <img src="foto/Eu e Celle.jpg" alt="Foto especial">
+    <h1>Para o amor da minha vida 💖</h1>
+    <div id="typed-text"></div>
+    <button onclick="startMusic()">Clique para ver a mensagem secreta 💌</button>
+    <div id="msg" class="secret-message">Eu te amo mais do que palavras podem expressar. Você é o meu sempre. ❤️</div>
+
+    <!-- Música -->
+    <audio id="bg-music" loop>
+      <source src="audio/ed-sheeran-perfect-instrumental_06XOcytB.mp3" type="audio/mp3">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+  <!-- Tela surpresa -->
+  <div id="surprise" class="flex">
+    <h2>🎉 Eu te amo muito! 🎉</h2>
+    <p>Você é o melhor presente que a vida me deu 💞</p>
+  </div>
+
+  <!-- Digitação -->
+  <script>
+    const msg = "Amoor, chegamos em mais um mês de namoro e tem sido uma das melhores coisas que tem me acontecido, sei que temos muitos altos e baixos no nosso relacionamento, mas isso faz parte, tenho aprendido tanto com o nosso namoro, tenho muito que melhorar e eu vou por quê o que mais quero e ver você cada dia mais feliz ao meu lado. Amor agradeço a Deus todos os dias por te apresentado a mim, sabe eu estava pensando foi preciso a minha saída de Ponte Nova para conhecer o Amor da minha vida, as vezes me perguntava se eu não iria conhecer a minha namorada, mas conheci e hoje eu sei que Deus estava me preparando para o momento certo que iria conhecer Você. Eu me lembro de cada momento que passamos juntos e as vezes eu vou me lembrando e fica parecendo um filme de romance clichê RSRS daqueles que você gosta (Obs.: eu também gosto rsrs), o mais importante nisso tudo é a alegria que vivemos juntos, quero que saiba que “Hoje eu te amo mais o que ontem, amanhã vou te amar mais do que hoje e assim vai ser por toda a eternidade” .... FELIZ 1.8 de namoro meu amoor!!! Eu te amo muitoooooooo.";
+    let i = 0;
+    function typeText() {
+      if (i < msg.length) {
+        document.getElementById("typed-text").innerHTML += msg.charAt(i);
+        i++;
+        setTimeout(typeText, 50);
+      }
+    }
+    typeText();
+  </script>
+
+  <!-- Música + Mensagem -->
+  <script>
+    function startMusic() {
+      const music = document.getElementById('bg-music');
+      music.play();
+      showMessage();
+    }
+    function showMessage() {
+      const el = document.getElementById('msg');
+      el.style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('surprise').style.display = 'flex';
+      }, 8000);
+    }
+  </script>
+
+  <!-- Corações animados -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      heart.innerHTML = "💗";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+
+</html>
